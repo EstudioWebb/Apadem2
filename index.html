@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>APADEM · Mercedes, Corrientes</title>
+<style>
+:root{
+  --color-gallery-white:#ffffff;--color-studio-mist:#f5f5f7;--color-paper-frost:#fafafc;
+  --color-hairline-silver:#d6d6d6;--color-control-gray:#e6e6e8;--color-ink:#1d1d1f;
+  --color-slate:#707070;--color-steel:#86868b;--color-apple-blue:#0066cc;--color-pricing-blue:#0071e3;--color-launch-orange:#b64400;
+  --nav-bg:rgba(255,255,255,.8);--nav-text:rgba(0,0,0,.8);--track:rgba(210,210,215,.64);--glyph:rgba(0,0,0,.56);
+  --font-display:'SF Pro Display',ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  --font-text:'SF Pro Text',ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  --radius-card:28px;--radius-nav:20px;--section-gap:90px;--card-pad:28px;--gap:20px;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --color-gallery-white:#000000;--color-studio-mist:#1d1d1f;--color-paper-frost:#161617;
+    --color-hairline-silver:#424245;--color-control-gray:#333336;--color-ink:#f5f5f7;
+    --color-slate:#a1a1a6;--color-steel:#86868b;--color-apple-blue:#2997ff;--color-launch-orange:#ff9f5a;
+    --nav-bg:rgba(0,0,0,.8);--nav-text:rgba(255,255,255,.8);--track:rgba(66,66,69,.64);--glyph:rgba(255,255,255,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --color-gallery-white:#000000;--color-studio-mist:#1d1d1f;--color-paper-frost:#161617;
+  --color-hairline-silver:#424245;--color-control-gray:#333336;--color-ink:#f5f5f7;
+  --color-slate:#a1a1a6;--color-steel:#86868b;--color-apple-blue:#2997ff;--color-launch-orange:#ff9f5a;
+  --nav-bg:rgba(0,0,0,.8);--nav-text:rgba(255,255,255,.8);--track:rgba(66,66,69,.64);--glyph:rgba(255,255,255,.7);
+}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 100px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--color-gallery-white);color:var(--color-ink);font-family:var(--font-text);font-size:17px;line-height:1.47;letter-spacing:-.374px;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--nav-bg);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px)}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--color-pricing-blue);outline-offset:3px;border-radius:10px}
+.wrap{max-width:1068px;margin:0 auto;padding:0 22px}
+
+/* Global nav */
+.gnav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;height:44px;background:var(--nav-bg);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px)}
+.gnav .wrap{height:44px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.gnav ul{list-style:none;margin:0;padding:0;display:flex;gap:28px;flex:1;justify-content:center}
+.gnav a{font-size:12px;line-height:1;letter-spacing:-.12px;color:var(--nav-text)}
+.gnav a:hover{color:var(--color-ink)}
+.glyph{width:16px;height:16px;color:var(--nav-text);display:block}
+
+/* Local nav */
+.lnav{position:sticky;top:calc(env(safe-area-inset-top,0px) + 44px);z-index:49;background:var(--color-gallery-white);border-bottom:1px solid var(--color-hairline-silver)}
+.lnav .wrap{height:52px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.lnav .title{font-family:var(--font-display);font-size:19px;font-weight:600;line-height:1.21;letter-spacing:.228px}
+.lnav .ctas{display:flex;gap:8px;align-items:center}
+.pill{display:inline-flex;align-items:center;font-family:var(--font-text);font-size:12px;line-height:16px;letter-spacing:-.12px;font-weight:400;padding:4px 11px;border-radius:9999px;cursor:pointer;border:0}
+.pill.outline{background:transparent;color:var(--color-ink);box-shadow:inset 0 0 0 1px var(--color-steel)}
+.pill.blue{background:var(--color-pricing-blue);color:#fff}
+.pill.blue:hover{background:#0077ed}
+
+/* Hero */
+.hero{text-align:center;padding:56px 0 0;background:var(--color-gallery-white);overflow:hidden}
+.status{font-size:12px;font-weight:600;line-height:16px;letter-spacing:-.12px;color:var(--color-launch-orange);margin:0 0 8px}
+.kicker{font-family:var(--font-display);font-size:21px;font-weight:600;line-height:1;letter-spacing:.231px;margin:0 0 12px}
+.hero h1{font-family:var(--font-display);font-weight:600;font-size:clamp(40px,9.2vw,80px);line-height:1.05;letter-spacing:-1.2px;margin:0 auto;max-width:900px}
+.hero p.lead{font-size:21px;line-height:1.24;letter-spacing:-.374px;margin:20px auto 0;max-width:620px;color:var(--color-ink)}
+.hero .row{display:flex;gap:20px;justify-content:center;align-items:center;margin-top:20px;font-size:17px}
+.link{color:var(--color-apple-blue)}
+.link:hover{text-decoration:underline}
+.stage{position:relative;margin:40px auto 0;max-width:1068px}
+.stage svg{display:block;width:100%;height:auto}
+.callout{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);background:var(--color-gallery-white);border-radius:28px;padding:16px 16px 16px 24px;display:flex;gap:20px;align-items:center;box-shadow:inset 0 0 0 1px var(--color-hairline-silver);white-space:nowrap}
+.callout strong{display:block;font-size:14px;font-weight:600;line-height:1.29;letter-spacing:-.224px}
+.callout span{display:block;font-size:12px;line-height:1.33;letter-spacing:-.12px;color:var(--color-slate)}
+
+/* Anchor nav */
+.anchors{background:var(--color-gallery-white)}
+.anchors ul{list-style:none;margin:0;padding:28px 0;display:flex;gap:40px;justify-content:center;flex-wrap:wrap}
+.anchors a{font-size:17px;font-weight:500;line-height:25px;letter-spacing:-.374px}
+.anchors a:hover{color:var(--color-apple-blue)}
+
+/* Sections */
+section{padding:var(--section-gap) 0}
+.mist{background:var(--color-studio-mist)}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:40px}
+h2{font-family:var(--font-display);font-size:clamp(28px,5vw,40px);font-weight:600;line-height:1.1;letter-spacing:0;margin:0}
+h3{font-family:var(--font-display);font-size:24px;font-weight:600;line-height:1.17;letter-spacing:0;margin:0}
+.slate{color:var(--color-slate)}
+
+/* Highlights carousel */
+.track{display:flex;gap:var(--gap);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}
+.track::-webkit-scrollbar{display:none}
+.card{flex:0 0 min(86%,520px);scroll-snap-align:start;background:var(--color-gallery-white);border-radius:var(--radius-card);padding:var(--card-pad);min-height:520px;display:flex;flex-direction:column;justify-content:space-between}
+.card .tag{font-size:12px;font-weight:600;line-height:16px;letter-spacing:-.12px;color:var(--color-launch-orange)}
+.card h3{font-size:clamp(28px,4vw,40px);line-height:1.05;margin:8px 0 12px}
+.card p{margin:0;color:var(--color-ink);font-size:17px;line-height:1.24}
+.card .art{margin-top:28px;border-radius:var(--radius-card);background:var(--color-studio-mist);overflow:hidden}
+.card .art svg{display:block;width:100%;height:auto}
+.ctrl{display:flex;justify-content:center;margin-top:32px}
+.ctrl .box{display:inline-flex;align-items:center;gap:14px;background:var(--track);border-radius:36px;padding:14px 18px}
+.dots{display:flex;gap:10px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--glyph);opacity:.4;border:0;padding:0;cursor:pointer}
+.dot[aria-current="true"]{opacity:1}
+.pause{width:22px;height:22px;border:0;background:transparent;color:var(--glyph);cursor:pointer;padding:0;display:grid;place-items:center}
+
+/* Editorial */
+.edit{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.edit .kick{font-family:var(--font-display);font-size:21px;font-weight:600;line-height:1;letter-spacing:.231px;margin:0 0 16px}
+.edit h2{font-size:clamp(32px,5vw,48px);line-height:1.08;margin-bottom:24px}
+.edit p{margin:0 0 16px;font-size:17px;line-height:1.24;letter-spacing:-.374px}
+.media{background:var(--color-studio-mist);border-radius:var(--radius-card);padding:48px 40px;display:flex;flex-direction:column;gap:36px;min-height:460px;justify-content:center}
+.media .yr{font-family:var(--font-display);font-weight:600;font-size:clamp(64px,10vw,112px);line-height:1;letter-spacing:-1.2px}
+.media .cap{font-size:17px;line-height:1.24;color:var(--color-slate);margin-top:8px}
+.media .sep{height:1px;background:var(--color-hairline-silver)}
+
+/* Activities */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--gap)}
+.tile{background:var(--color-gallery-white);border-radius:var(--radius-card);padding:var(--card-pad);min-height:200px;display:flex;flex-direction:column;justify-content:space-between}
+.tile svg{width:36px;height:36px;color:var(--color-ink)}
+.tile p{margin:0;font-family:var(--font-display);font-size:24px;font-weight:600;line-height:1.17;letter-spacing:0}
+.note{margin:40px 0 0;text-align:center;font-family:var(--font-display);font-size:24px;font-weight:600;line-height:1.17}
+
+/* Community */
+.thanks{list-style:none;margin:0;padding:0;border-top:1px solid var(--color-hairline-silver)}
+.thanks li{font-family:var(--font-display);font-size:clamp(24px,4vw,40px);font-weight:600;line-height:1.1;padding:28px 0;border-bottom:1px solid var(--color-hairline-silver)}
+.thanks li span{display:block;font-family:var(--font-text);font-size:17px;font-weight:400;line-height:1.24;letter-spacing:-.374px;color:var(--color-slate);margin-top:8px}
+
+/* Contact */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap)}
+.cbox{background:var(--color-gallery-white);border-radius:var(--radius-card);padding:var(--card-pad)}
+.cbox h3{font-size:24px;margin-bottom:16px}
+.cbox p{margin:0 0 8px;font-size:17px;line-height:1.24}
+.cbox .btns{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
+.pill.lg{font-size:14px;line-height:20px;padding:8px 16px;letter-spacing:-.224px}
+
+footer{background:var(--color-studio-mist);padding:20px 0 28px;border-top:1px solid var(--color-hairline-silver)}
+footer p{margin:0;font-size:12px;line-height:1.33;letter-spacing:-.12px;color:var(--color-slate)}
+
+@media (max-width:860px){
+  .gnav ul{display:none}
+  .edit,.contact{grid-template-columns:1fr;gap:32px}
+  .hero{padding-top:40px}
+  .callout{position:static;transform:none;margin:20px auto 0;width:max-content;max-width:100%;white-space:normal}
+  .card{min-height:460px}
+  :root{--section-gap:64px}
+}
+@media (max-width:520px){
+  .lnav .outline{display:none}
+  .callout{flex-direction:column;align-items:flex-start;gap:12px;border-radius:28px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="gnav" role="banner">
+  <div class="wrap">
+    <a href="#inicio" aria-label="APADEM, inicio">
+      <svg class="glyph" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 14.2 2.1 8.6a3.6 3.6 0 0 1 5.1-5.1l.8.8.8-.8a3.6 3.6 0 0 1 5.1 5.1z"/></svg>
+    </a>
+    <ul>
+      <li><a href="#historia">Historia</a></li>
+      <li><a href="#espacios">Espacios</a></li>
+      <li><a href="#actividades">Actividades</a></li>
+      <li><a href="#comunidad">Comunidad</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="https://wa.me/543773547393" style="font-size:12px;color:var(--nav-text)" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</header>
+
+<div class="lnav">
+  <div class="wrap">
+    <span class="title">APADEM</span>
+    <div class="ctas">
+      <a class="pill outline" href="#espacios">Conocer los espacios</a>
+      <a class="pill blue" href="#contacto">Visitanos</a>
+    </div>
+  </div>
+</div>
+
+<main id="inicio">
+<section class="hero" style="padding-bottom:0">
+  <div class="wrap">
+    <p class="status">Desde 1973</p>
+    <p class="kicker">Mercedes, Corrientes</p>
+    <h1>Más de cinco décadas de inclusión.</h1>
+    <p class="lead">Acompañamos a personas con discapacidad mental y a sus familias con amor, compromiso y dedicación.</p>
+    <div class="row">
+      <a class="link" href="#historia">Conocé nuestra historia</a>
+      <a class="link" href="#contacto">Cómo llegar</a>
+    </div>
+  </div>
+  <div class="stage wrap" style="padding:0 22px">
+    <svg viewBox="0 0 1000 440" role="img" aria-label="Ilustración de la casa de APADEM con puertas abiertas" preserveAspectRatio="xMidYMax meet">
+      <rect x="0" y="380" width="1000" height="60" fill="var(--color-studio-mist)"/>
+      <!-- casa central -->
+      <rect x="250" y="170" width="500" height="210" rx="28" fill="var(--color-ink)"/>
+      <path d="M220 190 500 60l280 130z" fill="var(--color-steel)"/>
+      <rect x="450" y="250" width="100" height="130" rx="50" ry="50" fill="var(--color-gallery-white)"/>
+      <rect x="300" y="230" width="90" height="80" rx="14" fill="var(--color-gallery-white)"/>
+      <rect x="610" y="230" width="90" height="80" rx="14" fill="var(--color-gallery-white)"/>
+      <path d="M500 330c-14-10-26-19-26-30a14 14 0 0 1 26-7 14 14 0 0 1 26 7c0 11-12 20-26 30z" fill="var(--color-pricing-blue)"/>
+      <!-- alas laterales -->
+      <rect x="90" y="250" width="150" height="130" rx="22" fill="var(--color-control-gray)"/>
+      <rect x="760" y="250" width="150" height="130" rx="22" fill="var(--color-control-gray)"/>
+      <rect x="120" y="285" width="40" height="95" rx="20" fill="var(--color-steel)"/>
+      <rect x="840" y="285" width="40" height="95" rx="20" fill="var(--color-steel)"/>
+    </svg>
+    <div class="callout">
+      <div><strong>Puertas abiertas</strong><span>Sarmiento 256, Mercedes, Corrientes</span></div>
+      <a class="pill blue" href="https://www.google.com/maps/search/?api=1&query=Sarmiento%20256%2C%20Mercedes%2C%20Corrientes" target="_blank" rel="noopener">Cómo llegar</a>
+    </div>
+  </div>
+</section>
+
+<nav class="anchors" aria-label="Secciones">
+  <div class="wrap"><ul>
+    <li><a href="#historia">Historia</a></li>
+    <li><a href="#espacios">Espacios</a></li>
+    <li><a href="#actividades">Actividades</a></li>
+    <li><a href="#comunidad">Comunidad</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul></div>
+</nav>
+
+<section id="espacios" class="mist">
+  <div class="wrap">
+    <div class="head">
+      <h2>Tres espacios.<br>Un mismo propósito.</h2>
+      <a class="link" href="#contacto">Hablá con nosotros</a>
+    </div>
+    <div class="track" id="track" tabindex="0" aria-label="Espacios de APADEM">
+      <article class="card">
+        <div>
+          <span class="tag">Espacio 1</span>
+          <h3>Centro de Día San José Obrero</h3>
+          <p>Un lugar para compartir cada jornada: desayuno y almuerzo diario, recreación y aprendizaje.</p>
+        </div>
+        <div class="art"><svg viewBox="0 0 480 180" aria-hidden="true"><circle cx="240" cy="90" r="46" fill="var(--color-ink)"/><circle cx="130" cy="110" r="30" fill="var(--color-steel)"/><circle cx="350" cy="110" r="30" fill="var(--color-steel)"/><rect x="0" y="150" width="480" height="30" fill="var(--color-control-gray)"/></svg></div>
+      </article>
+      <article class="card">
+        <div>
+          <span class="tag">Espacio 2</span>
+          <h3>Hogar María Mercedes Garrido</h3>
+          <p>Un hogar para acompañar el desarrollo integral de quienes forman parte de APADEM.</p>
+        </div>
+        <div class="art"><svg viewBox="0 0 480 180" aria-hidden="true"><path d="M110 150V90l130-60 130 60v60z" fill="var(--color-ink)"/><rect x="215" y="100" width="50" height="50" rx="25" ry="25" fill="var(--color-studio-mist)"/><rect x="0" y="150" width="480" height="30" fill="var(--color-control-gray)"/></svg></div>
+      </article>
+      <article class="card">
+        <div>
+          <span class="tag">Espacio 3</span>
+          <h3>Taller Protegido de Producción</h3>
+          <p>Talleres productivos de panificados, escobillones y decoraciones navideñas que fomentan autonomía y sentido de propósito.</p>
+        </div>
+        <div class="art"><svg viewBox="0 0 480 180" aria-hidden="true"><rect x="70" y="70" width="90" height="80" rx="16" fill="var(--color-ink)"/><rect x="195" y="40" width="90" height="110" rx="16" fill="var(--color-steel)"/><rect x="320" y="90" width="90" height="60" rx="16" fill="var(--color-pricing-blue)"/><rect x="0" y="150" width="480" height="30" fill="var(--color-control-gray)"/></svg></div>
+      </article>
+    </div>
+    <div class="ctrl">
+      <div class="box">
+        <div class="dots" id="dots" role="tablist" aria-label="Elegir espacio">
+          <button class="dot" aria-label="Centro de Día" aria-current="true"></button>
+          <button class="dot" aria-label="Hogar"></button>
+          <button class="dot" aria-label="Taller"></button>
+        </div>
+        <button class="pause" id="pause" aria-label="Pausar avance automático">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" id="pauseIcon"><rect x="2" y="1" width="3.5" height="12" rx="1"/><rect x="8.5" y="1" width="3.5" height="12" rx="1"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="historia">
+  <div class="wrap edit">
+    <div>
+      <p class="kick">Nuestra historia</p>
+      <h2>Un sueño que nació del amor y la empatía.</h2>
+      <p>APADEM nació gracias a la visión de dos mujeres extraordinarias: Ángela Della Rosa de Garrido y Ruth Usandizaga de Moulín. En 1973 comenzaron a gestar un espacio educativo para niños con discapacidad.</p>
+      <p>Durante los primeros años, muchas familias escondían a sus hijos por miedo o desconocimiento. Fue necesario recorrer casa por casa y mostrar que la educación era la llave de la inclusión.</p>
+      <p>Con el tiempo, no solo los niños empezaron a asistir: también adultos. Las familias vieron cambios profundos en la comunicación, la integración social y el sentido de pertenencia.</p>
+    </div>
+    <div class="media" role="img" aria-label="Línea de tiempo: 1973 y 1975">
+      <div>
+        <div class="yr">1973</div>
+        <div class="cap">Comienzan a gestar un espacio educativo para niños con discapacidad.</div>
+      </div>
+      <div class="sep"></div>
+      <div>
+        <div class="yr">1975</div>
+        <div class="cap">Se crea un grado de apoyo en la Escuela N.º 84.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="actividades" class="mist">
+  <div class="wrap">
+    <div class="head"><h2>Cada día, algo para hacer juntos.</h2></div>
+    <div class="grid">
+      <div class="tile">
+        <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M8 14h20v8a8 8 0 0 1-8 8h-4a8 8 0 0 1-8-8zM28 16h2a3 3 0 0 1 0 6h-2M14 6v4M20 6v4"/></svg>
+        <p>Desayuno y almuerzo diario</p>
+      </div>
+      <div class="tile">
+        <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="16" width="24" height="14" rx="3"/><path d="M6 22h24M18 16v14M18 16c-3-8-9-6-7-3s7 3 7 3zM18 16c3-8 9-6 7-3s-7 3-7 3z"/></svg>
+        <p>Festejos de cumpleaños</p>
+      </div>
+      <div class="tile">
+        <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="9" width="26" height="16" rx="4"/><circle cx="12" cy="28" r="2.5"/><circle cx="24" cy="28" r="2.5"/><path d="M5 17h26"/></svg>
+        <p>Viajes y excursiones con acompañamiento</p>
+      </div>
+      <div class="tile">
+        <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="8" r="3.5"/><path d="M18 12v10M9 16l9 3 9-6M18 22l-6 9M18 22l6 9"/></svg>
+        <p>Gimnasia, baile y recreación</p>
+      </div>
+      <div class="tile">
+        <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 28h24M10 28V18a8 8 0 0 1 16 0v10M14 12l-2-4M22 12l2-4"/></svg>
+        <p>Talleres productivos: panificados, escobillones y decoraciones navideñas</p>
+      </div>
+    </div>
+    <p class="note">Presencia en la Exposición Rural por más de 30 años.</p>
+  </div>
+</section>
+
+<section id="comunidad">
+  <div class="wrap">
+    <div class="head">
+      <h2>Una gran familia.</h2>
+      <span class="slate" style="max-width:420px">Nada de esto sería posible sin quienes nos acompañan todos los días. Gracias a:</span>
+    </div>
+    <ul class="thanks">
+      <li>Las familias<span>Que confiaron desde el primer día.</span></li>
+      <li>Los voluntarios<span>Que brindan su tiempo y su corazón.</span></li>
+      <li>Los instructores<span>Que acompañan cada paso.</span></li>
+      <li>Las instituciones y funcionarios<span>Que nos apoyan.</span></li>
+    </ul>
+    <p class="note" style="max-width:640px;margin-left:auto;margin-right:auto">Cada paso hacia la autonomía tiene detrás una comunidad que cree en una sociedad más inclusiva.</p>
+  </div>
+</section>
+
+<section id="contacto" class="mist">
+  <div class="wrap">
+    <div class="head"><h2>Vení a conocernos.</h2><span class="slate">Estamos con las puertas abiertas y el corazón dispuesto a acompañar.</span></div>
+    <div class="contact">
+      <div class="cbox">
+        <h3>Dónde estamos</h3>
+        <p>Asociación de Padres y Amigos del Discapacitado Mental</p>
+        <p class="slate">Sarmiento 256, Mercedes, Corrientes</p>
+        <div class="btns">
+          <a class="pill blue lg" href="https://www.google.com/maps/search/?api=1&query=Sarmiento%20256%2C%20Mercedes%2C%20Corrientes" target="_blank" rel="noopener">Cómo llegar</a>
+        </div>
+      </div>
+      <div class="cbox">
+        <h3>Escribinos o llamanos</h3>
+        <p><a class="link" href="tel:+543773402889">+54 3773 402889</a></p>
+        <p><a class="link" href="https://wa.me/543773547393" target="_blank" rel="noopener">+54 3773 547393 (WhatsApp)</a></p>
+        <p><a class="link" href="mailto:apadem252@gmail.com">apadem252@gmail.com</a></p>
+        <div class="btns">
+          <a class="pill blue lg" href="https://wa.me/543773547393" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap"><p>© 2026 APADEM. Todos los derechos reservados. Sarmiento 256, Mercedes, Corrientes.</p></div>
+</footer>
+
+<script>
+(function(){
+  var track=document.getElementById('track'),dots=[].slice.call(document.querySelectorAll('.dot')),
+      pause=document.getElementById('pause'),icon=document.getElementById('pauseIcon'),
+      cards=[].slice.call(track.children),i=0,playing=true,timer;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce)playing=false;
+  function go(n){i=n;track.scrollTo({left:cards[n].offsetLeft-track.offsetLeft,behavior:reduce?'auto':'smooth'});mark(n)}
+  function mark(n){dots.forEach(function(d,k){d.setAttribute('aria-current',k===n?'true':'false')})}
+  dots.forEach(function(d,k){d.addEventListener('click',function(){go(k)})});
+  track.addEventListener('scroll',function(){
+    var best=0,min=1e9;cards.forEach(function(c,k){var d=Math.abs(c.offsetLeft-track.offsetLeft-track.scrollLeft);if(d<min){min=d;best=k}});
+    i=best;mark(best)
+  },{passive:true});
+  function draw(){
+    icon.innerHTML=playing?'<rect x="2" y="1" width="3.5" height="12" rx="1"/><rect x="8.5" y="1" width="3.5" height="12" rx="1"/>':'<path d="M3 1.5v11l9-5.5z"/>';
+    pause.setAttribute('aria-label',playing?'Pausar avance automático':'Reanudar avance automático');
+  }
+  function tick(){clearInterval(timer);if(playing)timer=setInterval(function(){go((i+1)%cards.length)},5000)}
+  pause.addEventListener('click',function(){playing=!playing;draw();tick()});
+  draw();tick();
+})();
+</script>
+</body>
+</html>
